@@ -67,6 +67,7 @@ def parse(text):
 
 def validate_video(media, session_direction, error, warn):
     mappings, fmtps, rids = {}, {}, {}
+    rid_ids = set()
     simulcast = []
     direction = session_direction
     mid = str(media.index)
@@ -95,8 +96,9 @@ def validate_video(media, session_direction, error, warn):
                 continue
             rid, flow = fields[:2]
             key = (flow, rid)
-            if key in rids:
-                error(f"duplicate {flow} RID {rid}")
+            if rid in rid_ids:
+                error(f"duplicate RID {rid} within media section")
+            rid_ids.add(rid)
             rids[key] = rid_payloads(fields[2] if len(fields) == 3 else "", media.formats, error)
         elif name == "simulcast":
             simulcast.append(value)
@@ -156,7 +158,7 @@ def rid_payloads(value, formats, error):
 
 def decode_profile(value, pt, error, warn):
     if value is None:
-        warn(f"payload {pt}: missing profile-level-id required for WebRTC H.264")
+        error(f"payload {pt}: missing profile-level-id required for WebRTC H.264")
         return {}
     if not re.fullmatch(r"[0-9a-fA-F]{6}", value):
         error(f"payload {pt}: profile-level-id must be six hexadecimal digits")

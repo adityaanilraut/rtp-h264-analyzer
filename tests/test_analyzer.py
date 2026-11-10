@@ -72,7 +72,13 @@ class SDPTests(unittest.TestCase):
         result = validate(self.base + "a=rid:l recv\n" + self.base[self.base.index("m="):]
                           + "a=simulcast:send l\n")
         self.assertFalse(result["valid"])
-        self.assertIn("undeclared RID", result["errors"][0])
+        self.assertTrue(any("undeclared RID" in error for error in result["errors"]))
+
+    def test_rejects_reused_rid_and_missing_webrtc_profile(self):
+        result = validate(self.base + "a=rid:l recv\na=rid:l send\n")
+        self.assertFalse(result["valid"])
+        self.assertTrue(any("duplicate RID" in error for error in result["errors"]))
+        self.assertTrue(any("missing profile-level-id" in error for error in result["errors"]))
 
     def test_saved_browser_offers(self):
         paths = sorted((Path(__file__).resolve().parents[1] / "examples" / "offers").glob("*.sdp"))
