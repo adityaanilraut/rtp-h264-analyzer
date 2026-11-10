@@ -1,0 +1,34 @@
+{
+  "payload_type": 96,
+  "malformed_rtp": 0,
+  "streams": [
+    {
+      "flow": [
+        "192.0.2.1",
+        4000,
+        "192.0.2.2",
+        5004
+      ],
+      "ssrc": "0x12345678",
+      "packets": 5,
+      "missing_packets": 1,
+      "duplicates": 0,
+      "reordered": 0,
+      "outside_sequence_window": 0,
+      "jitter_ms": 2.897,
+      "sps": 1,
+      "pps": 1,
+      "idr_frames": 1,
+      "idr_without_prior_sps_pps": 0,
+      "nal_types": {
+        "1": 2,
+        "5": 1,
+        "7": 1,
+        "8": 1
+      },
+      "invalid_payloads": 0,
+      "incomplete_fragments": 0,
+      "unsupported_payloads": 0
+    }
+  ]
+}

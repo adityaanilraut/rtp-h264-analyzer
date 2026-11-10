@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Capture a WebRTC video offer</title></head>
+<body>
+  <h1>Capture a WebRTC video offer</h1>
+  <p>This local page creates a send-only offer without requesting camera access or gathering ICE candidates.</p>
+  <button id="generate">Generate offer</button>
+  <pre id="offer"></pre>
+  <script>
+    async function captureOffer() {
+      const connection = new RTCPeerConnection();
+      try {
+        connection.addTransceiver("video", {
+          direction: "sendonly",
+          sendEncodings: [{rid: "l"}, {rid: "m"}, {rid: "h"}],
+        });
+        const {sdp} = await connection.createOffer();
+        return sdp.split(/\r?\n/).map(line => {
+          if (line.startsWith("o=")) return "o=- 0 0 IN IP4 127.0.0.1";
+          if (/^a=(ice-ufrag|ice-pwd|fingerprint|candidate):/.test(line)) return "";
+          return line;
+        }).filter(Boolean).join("\n") + "\n";
+      } finally {
+        connection.close();
+      }
+    }
+    document.querySelector("#generate").onclick = async () => {
+      const output = document.querySelector("#offer");
+      try {
+        output.textContent = await captureOffer();
+      } catch (error) {
+        output.textContent = String(error);
+      }
+    };
+  </script>
+</body>
+</html>

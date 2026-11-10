@@ -1,0 +1,215 @@
+{
+  "examples/offers/chromium.sdp": {
+    "valid": true,
+    "video": [
+      {
+        "mid": "0",
+        "direction": "sendonly",
+        "h264": [
+          {
+            "pt": "102",
+            "packetization_mode": "1",
+            "profile_level_id": "42001f",
+            "profile": "baseline",
+            "level_idc": 31
+          },
+          {
+            "pt": "104",
+            "packetization_mode": "0",
+            "profile_level_id": "42001f",
+            "profile": "baseline",
+            "level_idc": 31
+          },
+          {
+            "pt": "108",
+            "packetization_mode": "1",
+            "profile_level_id": "42e01f",
+            "profile": "constrained-baseline",
+            "level_idc": 31
+          },
+          {
+            "pt": "114",
+            "packetization_mode": "0",
+            "profile_level_id": "42e01f",
+            "profile": "constrained-baseline",
+            "level_idc": 31
+          },
+          {
+            "pt": "116",
+            "packetization_mode": "1",
+            "profile_level_id": "4d001f",
+            "profile": "main",
+            "level_idc": 31
+          },
+          {
+            "pt": "39",
+            "packetization_mode": "0",
+            "profile_level_id": "4d001f",
+            "profile": "main",
+            "level_idc": 31
+          }
+        ],
+        "rids": [
+          {
+            "id": "l",
+            "direction": "send",
+            "payload_types": []
+          },
+          {
+            "id": "m",
+            "direction": "send",
+            "payload_types": []
+          },
+          {
+            "id": "h",
+            "direction": "send",
+            "payload_types": []
+          }
+        ],
+        "simulcast": {
+          "send": [
+            [
+              "l"
+            ],
+            [
+              "m"
+            ],
+            [
+              "h"
+            ]
+          ]
+        }
+      }
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "examples/offers/firefox.sdp": {
+    "valid": true,
+    "video": [
+      {
+        "mid": "0",
+        "direction": "sendonly",
+        "h264": [
+          {
+            "pt": "126",
+            "packetization_mode": "1",
+            "profile_level_id": "42e01f",
+            "profile": "constrained-baseline",
+            "level_idc": 31
+          },
+          {
+            "pt": "105",
+            "packetization_mode": "1",
+            "profile_level_id": "42001f",
+            "profile": "baseline",
+            "level_idc": 31
+          }
+        ],
+        "rids": [
+          {
+            "id": "l",
+            "direction": "send",
+            "payload_types": []
+          },
+          {
+            "id": "m",
+            "direction": "send",
+            "payload_types": []
+          },
+          {
+            "id": "h",
+            "direction": "send",
+            "payload_types": []
+          }
+        ],
+        "simulcast": {
+          "send": [
+            [
+              "l"
+            ],
+            [
+              "m"
+            ],
+            [
+              "h"
+            ]
+          ]
+        }
+      }
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "examples/offers/webkit.sdp": {
+    "valid": true,
+    "video": [
+      {
+        "mid": "0",
+        "direction": "sendonly",
+        "h264": [
+          {
+            "pt": "96",
+            "packetization_mode": "1",
+            "profile_level_id": "640c1f",
+            "profile": "constrained-high",
+            "level_idc": 31
+          },
+          {
+            "pt": "98",
+            "packetization_mode": "1",
+            "profile_level_id": "42e01f",
+            "profile": "constrained-baseline",
+            "level_idc": 31
+          },
+          {
+            "pt": "100",
+            "packetization_mode": "0",
+            "profile_level_id": "640c1f",
+            "profile": "constrained-high",
+            "level_idc": 31
+          },
+          {
+            "pt": "102",
+            "packetization_mode": "0",
+            "profile_level_id": "42e01f",
+            "profile": "constrained-baseline",
+            "level_idc": 31
+          }
+        ],
+        "rids": [
+          {
+            "id": "l",
+            "direction": "send",
+            "payload_types": []
+          },
+          {
+            "id": "m",
+            "direction": "send",
+            "payload_types": []
+          },
+          {
+            "id": "h",
+            "direction": "send",
+            "payload_types": []
+          }
+        ],
+        "simulcast": {
+          "send": [
+            [
+              "l"
+            ],
+            [
+              "m"
+            ],
+            [
+              "h"
+            ]
+          ]
+        }
+      }
+    ],
+    "errors": [],
+    "warnings": []
+  }
+}

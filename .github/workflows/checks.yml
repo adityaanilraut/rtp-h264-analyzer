@@ -1,0 +1,19 @@
+name: Analyzer checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: |
+          python examples/make_capture.py /tmp/sample.pcap
+          python -m rtp_inspector rtp /tmp/sample.pcap --payload-type 96 --port 5004
+          python -m rtp_inspector sdp examples/offers/*.sdp
