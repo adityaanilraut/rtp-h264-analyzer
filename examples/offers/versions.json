@@ -1,5 +1,6 @@
 {
   "chromium": "158.0.8127.18",
   "firefox": "159.0",
-  "webkit": "27.2"
+  "webkit": "27.2",
+  "safari": "27.2"
 }

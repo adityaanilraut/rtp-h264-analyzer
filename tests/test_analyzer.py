@@ -76,7 +76,7 @@ class SDPTests(unittest.TestCase):
 
     def test_saved_browser_offers(self):
         paths = sorted((Path(__file__).resolve().parents[1] / "examples" / "offers").glob("*.sdp"))
-        self.assertGreaterEqual(len(paths), 3)
+        self.assertEqual({path.stem for path in paths}, {"chromium", "firefox", "safari", "webkit"})
         for path in paths:
             with self.subTest(browser=path.stem):
                 result = validate(path.read_text())

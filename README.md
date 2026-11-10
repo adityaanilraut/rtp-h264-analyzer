@@ -34,9 +34,10 @@ The synthetic capture deliberately omits one packet and crosses the sequence num
 | --- | ---: | --- | ---: |
 | Chromium 158.0.8127.18 | 6 | l, m, h | 0 |
 | Firefox 159.0 | 2 | l, m, h | 0 |
+| Safari 27.2 | 4 | l, m, h | 0 |
 | Playwright WebKit 27.2 | 4 | l, m, h | 0 |
 
-The saved offers were generated on macOS with Playwright and sanitized by removing ICE credentials and DTLS fingerprints. For an offer from installed Safari, serve `examples` with `python3 -m http.server 8000 --bind 127.0.0.1 --directory examples`, open `http://localhost:8000/capture-offer.html` in Safari, and save the generated text as an SDP file. [Saved offers](examples/offers) · [Validation output](results/browser-offers.json)
+The offers were generated on macOS using installed Safari and the three Playwright engines. The capture page removes ICE credentials and DTLS fingerprints. To reproduce a Safari offer, serve `examples` with `python3 -m http.server 8000 --bind 127.0.0.1 --directory examples`, open `http://localhost:8000/capture-offer.html` in Safari, and save the generated text as an SDP file. [Saved offers](examples/offers) · [Validation output](results/browser-offers.json)
 
 ## Scope
 
